@@ -30,6 +30,7 @@
     neovim                       # Best text editor
     stow                         # Link dotfiles
     htop                         # Monitor de sistema
+    yazi                         # Filesystem explorer
     vim                          # Old text editor
     wget                         # Descargar archivos
     neofetch                     # OS Info
