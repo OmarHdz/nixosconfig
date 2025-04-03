@@ -14,8 +14,13 @@ https://github.com/nix-community/NixOS-WSL
 
 bajar nixos.wsl de los releases del repo y hacer doble click en el archivo descargado
 
-ejecutar en powershell
+ejecutar en powershell (opcional, se carga nixos automatic en windows terminal)
 wsl -d NixOS
+
+## Please run `sudo nix-channel --update` and `sudo nixos-rebuild switch` now, to ensure you're running the latest NixOS and NixOS-WSL versions.
+sudo nix-channel --update
+sudo nixos-rebuild switch
+nix-shell -p git --run 'git clone https://github.com/OmarHdz/nixosconfig.git'
 
 ## Linkear de mi configuracion
 sudo mv /etc/nixos/configuration.nix /etc/nixos/bak.configuration.nix
@@ -42,7 +47,7 @@ nix-env -qaP | grep "nombreDelPaquete"
 ### Usar canales actualizados
 nix-channel --update
 
-### Ejemplos comunes de instalacion
+### Ejemplos comunes de instalacion a nivel usuario
 nix-env -iA nixpkgs.git
 nix-env -iA nixpkgs.nodejs
 nix-env -iA nixpkgs.python3
