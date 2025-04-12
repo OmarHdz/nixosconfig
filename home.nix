@@ -81,10 +81,6 @@
     # EDITOR = "emacs";
   };
 
-  programs.zoxide = {
-      enable = true;
-    };
-
  programs.git = {
     enable = true; # Asegúrate de que Git esté habilitado
 
@@ -110,34 +106,6 @@
        };
       };
 
-  # programs.bash.enable = true;
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-        ll = "ls -l";
-        cd = "cd ..";
-     };
-     initExtra = ''
-        eval "$(oh-my-posh init bash --config '${config.xdg.configHome}/ohmyposh/mytheme.json')"
-     '';
-  };
-
-  # # programs.bash.enable = true;
-  # programs.zsh = {
-  #   enable = true;
-  #   shellAliases = {
-  #       ll = "ls -l";
-  #       v = "nvim";
-  #       lg = "lazygit";
-  #       cd = "z";
-  #       lst="eza --color=always --tree --level=2 --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
-  #    };
-  #    initExtra = ''
-  #       eval "$(oh-my-posh init zsh --config '${config.xdg.configHome}/ohmyposh/mytheme.json')"
-  #       test -z "$TMUX" && tmux
-  #    '';
-  # };
-  #
   programs.tmux = {
     enable = true;
     # clock24 = true; # Ejemplo de opción simple de tmux
