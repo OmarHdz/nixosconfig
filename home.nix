@@ -118,7 +118,8 @@ home.activation.cloneTpm = lib.hm.dag.entryAfter ["writeBoundary"] ''
 
   home.file.".vimrc".source = ./vimrc;
   home.file.".config/nvim".source = ./nvim;
-  home.file.".config/ohmyposh/mytheme.json".source = ./mytheme.json;
+  #home.file.".config/ohmyposh/mytheme.json".source = ./mytheme.json;
+  home.file.".config/ohmyposh/mytheme.json".source = ./modules/themes/mytheme.json;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
