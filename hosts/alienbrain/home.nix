@@ -24,10 +24,28 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    
+
+    xclip
+    duf
+    jq
+    delta
+    thefuck
+    luarocks
+    imagemagick
+    gh
+    xh
+    viu
+    direnv
+    tlrc
+    glow
+    ripgrep
+    fzf
+    fd
+    sd
+
      # pkgs.hello
      # pkgs.oh-my-posh
      # pkgs.tmux
