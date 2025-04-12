@@ -3,10 +3,10 @@
 {
 
   imports = [
-    ./modules/home-manager/shells/sh.nix
-    ./modules/home-manager/shells/zoxide.nix
-    ./modules/home-manager/shells/git.nix
-    ./modules/home-manager/multiplexer/tmux.nix
+    ../../modules/home-manager/shells/sh.nix
+    ../..//modules/home-manager/shells/zoxide.nix
+    ../..//modules/home-manager/shells/git.nix
+    ../..//modules/home-manager/multiplexer/tmux.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
