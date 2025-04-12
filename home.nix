@@ -1,6 +1,10 @@
 { config, pkgs, lib, ... }:
 
 {
+
+  imports = [
+    ./modules/home-manager/shells/sh.nix
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "nixos";
@@ -118,22 +122,22 @@
      '';
   };
 
-  # programs.bash.enable = true;
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-        ll = "ls -l";
-        v = "nvim";
-        lg = "lazygit";
-        cd = "z";
-        lst="eza --color=always --tree --level=2 --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
-     };
-     initExtra = ''
-        eval "$(oh-my-posh init zsh --config '${config.xdg.configHome}/ohmyposh/mytheme.json')"
-        test -z "$TMUX" && tmux
-     '';
-  };
-
+  # # programs.bash.enable = true;
+  # programs.zsh = {
+  #   enable = true;
+  #   shellAliases = {
+  #       ll = "ls -l";
+  #       v = "nvim";
+  #       lg = "lazygit";
+  #       cd = "z";
+  #       lst="eza --color=always --tree --level=2 --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
+  #    };
+  #    initExtra = ''
+  #       eval "$(oh-my-posh init zsh --config '${config.xdg.configHome}/ohmyposh/mytheme.json')"
+  #       test -z "$TMUX" && tmux
+  #    '';
+  # };
+  #
   programs.tmux = {
     enable = true;
     # clock24 = true; # Ejemplo de opción simple de tmux
