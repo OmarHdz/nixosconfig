@@ -26,7 +26,7 @@
         modules = [
           # El módulo WSL pertenece AQUÍ
           nixos-wsl.nixosModules.wsl
-          ./configuration.nix
+          ./hosts/alienbrain/configuration.nix
           # Opcional: Podrías querer importar el módulo de home-manager para NixOS aquí
           # home-manager.nixosModules.home-manager
           # {
@@ -49,7 +49,7 @@
          extraSpecialArgs = { inherit system; };
          modules = [
            # NO incluyas nixos-wsl.nixosModules.wsl aquí
-           ./home.nix
+           ./hosts/alienbrain/home.nix
          ];
        };
      };
