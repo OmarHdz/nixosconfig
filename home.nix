@@ -5,6 +5,7 @@
   imports = [
     ./modules/home-manager/shells/sh.nix
     ./modules/home-manager/shells/zoxide.nix
+    ./modules/home-manager/shells/git.nix
     ./modules/home-manager/multiplexer/tmux.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
@@ -61,6 +62,7 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+  ".vimrc".source = ./modules/home-manager/editors/vimrc;
   };
 
   # Home Manager can also manage your environment variables through
@@ -83,31 +85,6 @@
     # EDITOR = "emacs";
   };
 
- programs.git = {
-    enable = true; # Asegúrate de que Git esté habilitado
-
-    # --- Configuraciones básicas ---
-    userName = "OmarHdz";
-    userEmail = "omarhg_@hotmail.com";
-
-    # --- Configuraciones adicionales (equivalente a git config --global key value) ---
-    # Usa 'extraConfig' para la mayoría de las opciones
-    extraConfig = {
-      # init.defaultBranch = "main"; # Cambia la rama por defecto a 'main'
-      # pull.rebase = true;          # Prefiere rebase en lugar de merge al hacer pull
-      # github.user = "tu_usuario_github"; # Útil para herramientas como 'hub' o 'gh'
-      # # ... otras opciones ...
-      #
-      # # Ejemplo de alias
-      # alias = {
-      #   st = "status -sb";
-      #   co = "checkout";
-      #   br = "branch";
-      #   ci = "commit";
-      #   ll = "log --pretty=format:'%C(yellow)%h %C(cyan)%>(12)%ar %C(magenta)%<(10)%aN %C(auto)%d %Creset%s'";
-       };
-      };
-
 # Activation script to clone tpm if it doesn't exist
 home.activation.cloneTpm = lib.hm.dag.entryAfter ["writeBoundary"] ''
     mkdir -p "$HOME/.tmux/plugins"
@@ -116,7 +93,7 @@ home.activation.cloneTpm = lib.hm.dag.entryAfter ["writeBoundary"] ''
     fi
   '';
 
-  home.file.".vimrc".source = ./modules/home-manager/editors/vimrc;
+  #home.file.".vimrc".source = ./modules/home-manager/editors/vimrc;
   home.file.".config/nvim".source = ./modules/home-manager/editors/nvim;
   home.file.".config/ohmyposh/mytheme.json".source = ./modules/themes/mytheme.json;
 
