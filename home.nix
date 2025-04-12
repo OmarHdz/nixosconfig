@@ -27,11 +27,11 @@
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-     pkgs.hello
+    
+     # pkgs.hello
+     # pkgs.oh-my-posh
+     # pkgs.tmux
 
-     pkgs.oh-my-posh
-
-     pkgs.tmux
      # pkgs.tmux-plugin-manager
      # pkgs.zoxide
 
@@ -62,7 +62,10 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-  ".vimrc".source = ./modules/home-manager/editors/vimrc;
+    ".vimrc".source = ./modules/home-manager/editors/vimrc;
+    ".config/nvim".source = ./modules/home-manager/editors/nvim;
+    ".config/ohmyposh/mytheme.json".source = ./modules/themes/mytheme.json;
+
   };
 
   # Home Manager can also manage your environment variables through
@@ -85,17 +88,17 @@
     # EDITOR = "emacs";
   };
 
-# Activation script to clone tpm if it doesn't exist
-home.activation.cloneTpm = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    mkdir -p "$HOME/.tmux/plugins"
-    if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-      ${pkgs.git}/bin/git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
-    fi
-  '';
+  # Activation script to clone tpm if it doesn't exist
+  home.activation.cloneTpm = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      mkdir -p "$HOME/.tmux/plugins"
+      if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+        ${pkgs.git}/bin/git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+      fi
+    '';
 
   #home.file.".vimrc".source = ./modules/home-manager/editors/vimrc;
-  home.file.".config/nvim".source = ./modules/home-manager/editors/nvim;
-  home.file.".config/ohmyposh/mytheme.json".source = ./modules/themes/mytheme.json;
+  # home.file.".config/nvim".source = ./modules/home-manager/editors/nvim;
+  # home.file.".config/ohmyposh/mytheme.json".source = ./modules/themes/mytheme.json;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
