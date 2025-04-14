@@ -6,7 +6,7 @@
     ../../modules/home-manager/shells/sh.nix
     ../../modules/home-manager/shells/zoxide.nix
     ../../modules/home-manager/shells/git.nix
-    ../../modules/home-manager/multiplexer/tmux.nix
+    # ../../modules/home-manager/multiplexer/tmux.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -80,6 +80,7 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".tmux.conf".source = ../../modules/home-manager/multiplexer/tmux.conf;
     ".vimrc".source = ../../modules/home-manager/editors/vimrc;
     ".config/nvim".source = ../../modules/home-manager/editors/nvim;
     ".config/ohmyposh/mytheme.json".source = ../../modules/themes/mytheme.json;
