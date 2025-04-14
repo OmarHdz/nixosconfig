@@ -17,7 +17,7 @@
 
       # --- Añade aquí los plugins que quieras gestionar con TPM ---
       # Plugins comunes (descomenta los que quieras):
-      tmuxPlugins.sensible    # Configuraciones base sensibles
+      # tmuxPlugins.sensible    # Configuraciones base sensibles
       tmuxPlugins.resurrect   # Guarda y restaura sesiones de tmux
       tmuxPlugins.continuum   # Autoguardado y autorestore (requiere resurrect)
       tmuxPlugins.vim-tmux-navigator # Navegación transparente entre paneles de tmux y splits de Vim/Neovim
