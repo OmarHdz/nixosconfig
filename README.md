@@ -24,4 +24,5 @@ nix-channel --update
 nix-shell '<home-manager>' -A install
 
 #### run home-manager
+#### tiene que estar el archivo flake.nix en este path
 home-manager switch --flake .

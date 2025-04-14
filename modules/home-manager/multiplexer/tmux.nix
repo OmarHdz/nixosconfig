@@ -81,11 +81,13 @@
       #set -agF status-right "#{E:@catppuccin_status_cpu}"
       set -ag status-right "#{E:@catppuccin_status_session}"
       set -ag status-right "#{E:@catppuccin_status_uptime}"
+      set -g @catppuccin_window_status_style "rounded"
 
+      # set -g @plugin 'floax'
+      unbind C-f
       set -g @floax-border-color 'cyan'
       set -g @floax-bind 'C-f'
 
-      set -g @catppuccin_window_status_style "rounded"
     '';
 
   };
