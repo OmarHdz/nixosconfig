@@ -7,7 +7,7 @@ let
     lg = "lazygit";
     cd = "z";
     ff = "yazi";
-    cat="bat --theme=default"
+    cat="bat --theme=default";
     lst="eza --color=always --tree --level=2 --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
   };
 in
@@ -19,6 +19,7 @@ in
     initExtra = ''
         eval "$(oh-my-posh init zsh --config '${config.xdg.configHome}/ohmyposh/mytheme.json')"
         test -z "$TMUX" && tmux
+        eval "$(direnv hook zsh)"
      '';
   };
 

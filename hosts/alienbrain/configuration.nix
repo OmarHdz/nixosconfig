@@ -18,6 +18,7 @@
   wsl.enable = true;
   wsl.defaultUser = "nixos";
 
+  nix.settings.trusted-users = [ "root" "nixos" ];
 
   # Añade los paquetes que necesites aquí:
   environment.systemPackages = with pkgs; [
@@ -42,6 +43,7 @@
     bat                          # Fancy show files
     python3                      # Fancy show files
     uv                           # Packages manage python
+    devenv                           # Packages manage python
   ];
 
   users.users.nixos = {
