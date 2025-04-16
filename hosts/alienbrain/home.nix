@@ -28,6 +28,7 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
 
+    atuin                        # Search history utility
     bat                          # Fancy show files, modern cat
     chafa                        # Show images in terminal for neovim
     delta                        # Fancy show differences in files
@@ -36,6 +37,7 @@
     duf                          # Disc Space measurement
     eza                          # Fancy list directories, modern ls
     fd                           # Modern find
+    feh                          # Image in terminal
     fzf                          # Modern find in fuzzy find
     gcc                          # Compilador de c
     gh                           # Github cli, conect, control github
@@ -59,6 +61,7 @@
     ripgrep                      # Modern grep
     sd                           # Modern sed
     stow                         # Symlinks dotfiles
+    timg                         # Image in terminal
     thefuck                      # Correct things in terminal
     tlrc                         # Show info for commands in fancy way
     tmux                         # Multi terminal managment
@@ -67,13 +70,15 @@
     uv                           # Fast packages manager python
     vim                          # Great old text editor
     viu                          # Fancy show images in terminal
+    wezterm                      # Terminal emulator for gpu
     wget                         # Descargar archivos del internet
+    wslu                         # Utility for Wsl
     xclip                        # Clipboard manipulator
     xh                           # Fancy https requests
     yazi                         # Fancy filesystem explorer
     zoxide                       # Fast change directory
     zsh                          # Base Terminal
-    # zsh-autocomplete             # Autocomple for terminal
+    zsh-autocomplete             # Autocomple for terminal
     zsh-autosuggestions          # Autosuggestions for terminal
     zsh-syntax-highlighting      # Highligh installed packages
 
