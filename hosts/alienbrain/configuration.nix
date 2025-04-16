@@ -22,10 +22,11 @@
 
   # Añade los paquetes que necesites aquí:
   environment.systemPackages = with pkgs; [
+   # zsh
   ];
 
   users.users.nixos = {
-	shell = pkgs.zsh;
+    shell = pkgs.zsh;
   };
 
   programs.zsh = {

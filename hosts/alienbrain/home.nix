@@ -32,6 +32,7 @@
     bat                          # Fancy show files, modern cat
     btop                         # Moniotorea el sistema
     chafa                        # Show images in terminal for neovim
+    # cmatrix                      # Terminal matrix theme
     delta                        # Fancy show differences in files
     devenv                       # Isolate nix shell environments
     direnv                       # Activate environment when enter dir
@@ -42,10 +43,12 @@
     fzf                          # Modern find in fuzzy find
     gcc                          # Compilador de c
     gh                           # Github cli, conect, control github
+    # ghostscript                  # gs for nvim 
     git                          # Control version control
     git-secrets                  # Control secrets in git
     glow                         # Show markdowns renders in terminal
     gnumake                      # Install make para compilar
+    # hollywood                    # Hacker theme
     htop                         # Monitor de sistema
     imagemagick                  # Manejo imagenes, lo pide nvim
     jq                           # Manejo de json en terminal
@@ -64,6 +67,7 @@
     sd                           # Modern sed
     speedread                    # speedread practice
     stow                         # Symlinks dotfiles
+    # texlive                      # Latex
     timg                         # Image in terminal
     thefuck                      # Correct things in terminal
     tlrc                         # Show info for commands in fancy way
@@ -84,9 +88,6 @@
     zsh-autocomplete             # Autocomple for terminal
     zsh-autosuggestions          # Autosuggestions for terminal
     zsh-syntax-highlighting      # Highligh installed packages
-
-    cmatrix                      # Terminal matrix theme
-    hollywood                    # Hacker theme
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
