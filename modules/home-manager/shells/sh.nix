@@ -2,8 +2,8 @@
 
 let
  myAliases = {
-    ll = "ls -l";
     v = "nvim";
+    ll = "ls -l";
     lg = "lazygit";
     ff = "yazi";
     cat="bat --theme=default";
@@ -17,6 +17,9 @@ let
     showi="echo 'Usar sin tmux' && timg -p 's'";
     showw="wslview";
     showf="feh";
+
+    nrs="echo 'sudo nixos-rebuild switch --flake .' && sudo nixos-rebuild switch --flake .";
+    hms="echo 'home-manager switch --flake .' && home-manager switch --flake .";
   };
 in
 {
@@ -48,24 +51,15 @@ in
       # theme = "agnoster"; # Tu tema elegido
       plugins = [
         "git"
-        # "zsh-syntax-highlighting"
-        # "zsh-autosuggestions"
         # Descomenta si los necesitas y tienes las herramientas base instaladas
         # (sudo suele estar, docker necesita pkgs.docker en home.packages)
         # "sudo"
         # "docker"
-
-        # Considera añadir estos aquí si usas OMZ, en lugar de las opciones de nivel superior
+        # "zsh-syntax-highlighting"
+        # "zsh-autosuggestions"
       ];
-      # Puedes añadir configuraciones personalizadas si OMZ lo soporta
-      # custom = "/ruta/a/tu/directorio/custom";
     };
 
-    # ohMyZsh = {
-    #   enable = true;
-    #   plugins = [ "git" ]; # "sudo" "docker" ];  # Plugins que desees
-    #   theme = "agnoster";                   # Tema (ej: "robbyrussell", "agnoster")
-    # };
     # interactiveShellInit = ''
     #   source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     #   # Si también quieres autosuggestions:
