@@ -29,6 +29,7 @@
     # # "Hello, world!" when run.
 
     bat                          # Fancy show files, modern cat
+    chafa                        # Show images in terminal for neovim
     delta                        # Fancy show differences in files
     devenv                       # Isolate nix shell environments
     direnv                       # Activate environment when enter dir
@@ -50,15 +51,19 @@
     mermaid-cli                  # Show mermaid diagrams in terminal
     neofetch                     # Get OS Info
     neovim                       # Best text editor ever
+    nodejs_18                    # Nodejs version 18
     oh-my-zsh                    # Package manager for zsh
     oh-my-posh                   # Style terminal
     python3                      # Python3
+    python312Packages.pylatexenc # Latex2tex convert text to latex render
     ripgrep                      # Modern grep
     sd                           # Modern sed
     stow                         # Symlinks dotfiles
     thefuck                      # Correct things in terminal
     tlrc                         # Show info for commands in fancy way
     tmux                         # Multi terminal managment
+    tree-sitter                  # Language parser for nvim
+    ueberzugpp                   # Backend to see image in nvim
     uv                           # Fast packages manager python
     vim                          # Great old text editor
     viu                          # Fancy show images in terminal
