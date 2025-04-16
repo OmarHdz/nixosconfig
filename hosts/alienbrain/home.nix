@@ -28,6 +28,7 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
 
+    lua5_1
     tmux
     xclip
     duf
@@ -46,13 +47,6 @@
     fzf
     fd
     sd
-
-     # pkgs.hello
-     # pkgs.oh-my-posh
-     # pkgs.tmux
-
-     # pkgs.tmux-plugin-manager
-     # pkgs.zoxide
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -105,7 +99,7 @@
   #  /etc/profiles/per-user/nixos/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+     EDITOR = "nvim";
   };
 
   # Activation script to clone tpm if it doesn't exist
