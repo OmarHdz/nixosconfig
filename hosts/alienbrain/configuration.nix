@@ -22,29 +22,6 @@
 
   # Añade los paquetes que necesites aquí:
   environment.systemPackages = with pkgs; [
-    gcc                          # Compilador de c
-    gnumake                      # Install make para compilar
-    zsh                          # Base Terminal
-    oh-my-zsh                    # Package manager for zsh
-    oh-my-posh                   # Style terminal
-    git                          # Ejemplo: Instalar Git
-    zsh-syntax-highlighting      # Highligh installed packages
-    zsh-autosuggestions          # Autosuggestions for terminal
-    neovim                       # Best text editor
-    zoxide                       # Fast change directory
-    stow                         # Link dotfiles
-    htop                         # Monitor de sistema
-    yazi                         # Filesystem explorer
-    vim                          # Old text editor
-    wget                         # Descargar archivos
-    neofetch                     # OS Info
-    lazygit                      # Interactive git ui
-    eza                          # Fancy list dirs and files 
-    bat                          # Fancy show files
-    python3                      # Fancy show files
-    uv                           # Packages manage python
-    devenv                           # Packages manage python
-    mermaid-cli                           # Packages manage python
   ];
 
   users.users.nixos = {

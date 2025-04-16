@@ -28,25 +28,49 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
 
-    lua5_1
-    tmux
-    xclip
-    duf
-    jq
-    delta
-    thefuck
-    luarocks
-    imagemagick
-    gh
-    xh
-    viu
-    direnv
-    tlrc
-    glow
-    ripgrep
-    fzf
-    fd
-    sd
+    bat                          # Fancy show files, modern cat
+    delta                        # Fancy show differences in files
+    devenv                       # Isolate nix shell environments
+    direnv                       # Activate environment when enter dir
+    duf                          # Disc Space measurement
+    eza                          # Fancy list directories, modern ls
+    fd                           # Modern find
+    fzf                          # Modern find in fuzzy find
+    gcc                          # Compilador de c
+    gh                           # Github cli, conect, control github
+    git                          # Control version control
+    glow                         # Show markdowns renders in terminal
+    gnumake                      # Install make para compilar
+    htop                         # Monitor de sistema
+    imagemagick                  # Manejo imagenes, lo pide nvim
+    jq                           # Manejo de json en terminal
+    lazygit                      # Interactive git ui
+    lua5_1                       # Lua5.1 for nvim
+    luarocks                     # luarocks for nvim
+    mermaid-cli                  # Show mermaid diagrams in terminal
+    neofetch                     # Get OS Info
+    neovim                       # Best text editor ever
+    oh-my-zsh                    # Package manager for zsh
+    oh-my-posh                   # Style terminal
+    python3                      # Python3
+    ripgrep                      # Modern grep
+    sd                           # Modern sed
+    stow                         # Symlinks dotfiles
+    thefuck                      # Correct things in terminal
+    tlrc                         # Show info for commands in fancy way
+    tmux                         # Multi terminal managment
+    uv                           # Fast packages manager python
+    vim                          # Great old text editor
+    viu                          # Fancy show images in terminal
+    wget                         # Descargar archivos del internet
+    xclip                        # Clipboard manipulator
+    xh                           # Fancy https requests
+    yazi                         # Fancy filesystem explorer
+    zoxide                       # Fast change directory
+    zsh                          # Base Terminal
+    # zsh-autocomplete             # Autocomple for terminal
+    zsh-autosuggestions          # Autosuggestions for terminal
+    zsh-syntax-highlighting      # Highligh installed packages
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
