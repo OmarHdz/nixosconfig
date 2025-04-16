@@ -11,18 +11,22 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, ... }:
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, ... }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
-      # Define pkgs una vez para usarlo en ambos
       pkgs = nixpkgs.legacyPackages.${system};
+      # Define pkgs una vez para usarlo en ambos
+      # pkgs = nixpkgs.legacyPackages.${system};
     in {
      # Configuración del Sistema NixOS
      nixosConfigurations = {
       nixos = lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit pkgs; }; # Puedes pasar pkgs explícitamente si quieres
+        specialArgs = { 
+          # inherit pkgs; 
+          inherit inputs; 
+          }; # Puedes pasar pkgs explícitamente si quieres
         modules = [
           # El módulo WSL pertenece AQUÍ
           nixos-wsl.nixosModules.wsl
