@@ -1,18 +1,19 @@
-# nixosconfig
-## My personal nixos config
 
-pegar el archivo nixconf/configuration.nix en:
+# Rebuild the system
+sudo nixos-rebuild switch --flake .
 
-/etc/nixos/configuration.nix
+sudo nixos-rebuild switch --flake .#nombredel host
 
-y ejecutar
+# Actualiza los paquetes en el lock, solo cambia el archivo lock
+nix flake update
 
-sudo nixos-rebuild switch
+# Para actualizar los paquetes se usa
+sudo nixos-rebuild switch --flake .
 
-### Instalar NixOs-Wsl
-https://github.com/nix-community/NixOS-WSL
+# Homemanager switch
+home-manager switch --flake .
 
-bajar nixos.wsl de los releases del repo y hacer doble click en el archivo descargado
+# Exportar a otro sistema
 
 ejecutar en powershell (opcional, se carga nixos automatic en windows terminal)
 wsl -d NixOS
@@ -71,4 +72,15 @@ Los paquetes en environment.systemPackages están disponibles para todos los usu
 Para buscar paquetes, usa:
 nix search nixpkgs nombrePaquete
 o visita: https://search.nixos.org/packages
+=======
+cd .dotfiles
+sudo nixos-rebuild switch --flake .
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
 
+#### install home-manager
+nix-shell '<home-manager>' -A install
+
+#### run home-manager
+#### tiene que estar el archivo flake.nix en este path
+home-manager switch --flake .

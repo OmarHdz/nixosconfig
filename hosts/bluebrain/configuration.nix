@@ -12,7 +12,7 @@
 {
   imports = [
     # include NixOS-WSL modules
-    <nixos-wsl/modules>
+    # <nixos-wsl/modules>
   ];
 
   wsl.enable = true;
@@ -21,6 +21,8 @@
 
   # Añade los paquetes que necesites aquí:
   environment.systemPackages = with pkgs; [
+    gcc                          # Compilador de c
+    gnumake                      # Install make para compilar
     zsh                          # Base Terminal
     oh-my-zsh                    # Package manager for zsh
     oh-my-posh                   # Style terminal
@@ -28,6 +30,7 @@
     zsh-syntax-highlighting      # Highligh installed packages
     zsh-autosuggestions          # Autosuggestions for terminal
     neovim                       # Best text editor
+    zoxide                       # Fast change directory
     stow                         # Link dotfiles
     htop                         # Monitor de sistema
     yazi                         # Filesystem explorer
@@ -35,6 +38,10 @@
     wget                         # Descargar archivos
     neofetch                     # OS Info
     lazygit                      # Interactive git ui
+    eza                          # Fancy list dirs and files 
+    bat                          # Fancy show files
+    python3                      # Fancy show files
+    uv                           # Packages manage python
   ];
 
   users.users.nixos = {
@@ -62,4 +69,7 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
 }

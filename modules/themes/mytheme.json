@@ -1,0 +1,108 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+        "os": "#ACB0BE",
+        "closer": "p:os",
+        "pink": "#F5C2E7",
+        "lavender": "#B4BEFE",
+        "blue":  "#89B4FA",
+        "green":  "#A6E3A1",
+        "yellow":  "#F9E2AF",
+        "purple":  "#8829EF",
+        "lgray":  "#BAC2DE",
+        "sky":  "#90DCEB"
+  },
+  "transient_prompt": {
+          "background": "transparent",
+          "foreground": "p:purple",
+          "template": " ❱ "
+      },
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+		{
+          "type": "python",
+          "style": "plain",
+          "foreground": "#00FF00",
+          "template": "<p:green>\ue235 {{ if .Venv }} venv{{ end }}</>"
+        },
+        {
+          "foreground": "#FFFFFF",
+          "style": "plain",
+          "template": "<p:blue> </> ",
+          "type": "session"
+        },
+        {
+          "foreground": "#90D5FF",
+          "properties": {
+            "folder_icon": "\uf115",
+            "folder_separator_icon": "\\",
+            "style": "full"
+          },
+          "style": "plain",
+          "template": " {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "foreground": "#B8B80A",
+          "style": "plain",
+          "template": "<p:green>git: </><p:yellow>{{ .HEAD }}</> ",
+          "type": "git"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "foreground": "#FFFFFF",
+          "style": "plain",
+          "template": "<p:sky>{{ .UserName }}</> <p:lgray>in</> <p:green>{{ .HostName }}</> ",
+          "type": "session"
+        },
+        {
+          "foreground": "p:lgray",
+          "style": "plain",
+          "template": "[{{ .CurrentDate | date .Format }}]",
+          "type": "time"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "#CECE04",
+          "style": "plain",
+          "template": "\uf0e7 ",
+          "type": "root"
+        },
+        {
+          "foreground": "#100e23",
+          "style": "plain",
+          "template": "<p:green>{{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }}{{ end }}{{ .Full }}{{ end }}</> ",
+          "type": "python"
+        },
+        {
+          "foreground": "#CB4B16",
+          "style": "plain",
+          "template": " {{ reason .Code }} ",
+          "type": "status"
+        },
+        {
+          "foreground": "p:purple",
+          "style": "plain",
+          "template": " ❱ ",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "final_space": false,
+  "version": 3
+}
