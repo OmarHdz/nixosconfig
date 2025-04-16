@@ -44,6 +44,7 @@
     python3                      # Fancy show files
     uv                           # Packages manage python
     devenv                           # Packages manage python
+    mermaid-cli                           # Packages manage python
   ];
 
   users.users.nixos = {
