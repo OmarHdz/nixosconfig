@@ -30,6 +30,7 @@
 
     atuin                        # Search history utility
     bat                          # Fancy show files, modern cat
+    btop                         # Moniotorea el sistema
     chafa                        # Show images in terminal for neovim
     delta                        # Fancy show differences in files
     devenv                       # Isolate nix shell environments
@@ -42,6 +43,7 @@
     gcc                          # Compilador de c
     gh                           # Github cli, conect, control github
     git                          # Control version control
+    git-secrets                  # Control secrets in git
     glow                         # Show markdowns renders in terminal
     gnumake                      # Install make para compilar
     htop                         # Monitor de sistema
@@ -60,6 +62,7 @@
     python312Packages.pylatexenc # Latex2tex convert text to latex render
     ripgrep                      # Modern grep
     sd                           # Modern sed
+    speedread                    # speedread practice
     stow                         # Symlinks dotfiles
     timg                         # Image in terminal
     thefuck                      # Correct things in terminal
@@ -81,6 +84,9 @@
     zsh-autocomplete             # Autocomple for terminal
     zsh-autosuggestions          # Autosuggestions for terminal
     zsh-syntax-highlighting      # Highligh installed packages
+
+    cmatrix                      # Terminal matrix theme
+    hollywood                    # Hacker theme
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -113,6 +119,8 @@
     ".vimrc".source = ../../modules/home-manager/editors/vimrc;
     ".config/nvim".source = ../../modules/home-manager/editors/nvim;
     ".config/ohmyposh/mytheme.json".source = ../../modules/themes/mytheme.json;
+    ".config/yazi".source = ../../modules/home-manager/shells/yazi;
+    ".config/lazygit".source = ../../modules/home-manager/shells/lazygit;
 
   };
 

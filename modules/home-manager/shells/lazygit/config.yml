@@ -1,0 +1,16 @@
+# Config relating to the Lazygit UI
+gui:
+  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-author-color
+  authorColors: {}
+  # Whether to split the main window when viewing file changes.
+  # One of: 'auto' | 'always'
+  # If 'auto', only split the main window when a file has both staged and unstaged changes
+  splitDiff: auto
+
+  # Default size for focused window. Can be changed from within Lazygit with '+' and '_' (but this won't change the default).
+  # One of: 'normal' (default) | 'half' | 'full'
+  screenMode: normal
+
+  # Window border style.
+  # One of 'rounded' (default) | 'single' | 'double' | 'hidden'
+  border: rounded

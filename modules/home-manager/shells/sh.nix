@@ -5,12 +5,11 @@ let
     ll = "ls -l";
     v = "nvim";
     lg = "lazygit";
-    # cd = "z";
     ff = "yazi";
     cat="bat --theme=default";
 
     uva="uv venv && echo 'source .venv/bin/activate' > .envrc && direnv allow && clear";
-    lp="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions";
+    lh="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions";
     ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
     lst="eza --color=always --tree --level=2 --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
 
@@ -24,7 +23,17 @@ in
   # programs.bash.enable = true;
   programs.zsh = {
     enable = true;
+    ohMyZsh = {
+      enable = true;
+      plugins = [ "git" ]; # "sudo" "docker" ];  # Plugins que desees
+      theme = "agnoster";                   # Tema (ej: "robbyrussell", "agnoster")
+    };
     shellAliases = myAliases;
+    interactiveShellInit = ''
+      source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+      # Si también quieres autosuggestions:
+      source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    '';
     initExtra = ''
         eval "$(oh-my-posh init zsh --config '${config.xdg.configHome}/ohmyposh/mytheme.json')"
         test -z "$TMUX" && tmux

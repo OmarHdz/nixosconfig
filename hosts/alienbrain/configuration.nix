@@ -28,19 +28,19 @@
 	shell = pkgs.zsh;
   };
 
-  programs.zsh = {
-    enable = true;
-    ohMyZsh = {
-      enable = true;
-      plugins = [ "git" ]; # "sudo" "docker" ];  # Plugins que desees
-      theme = "agnoster";                   # Tema (ej: "robbyrussell", "agnoster")
-    };
-    interactiveShellInit = ''
-      source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-      # Si también quieres autosuggestions:
-      source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-    '';
-  };
+  # programs.zsh = {
+  #   enable = true;
+  #   ohMyZsh = {
+  #     enable = true;
+  #     plugins = [ "git" ]; # "sudo" "docker" ];  # Plugins que desees
+  #     theme = "agnoster";                   # Tema (ej: "robbyrussell", "agnoster")
+  #   };
+  #   interactiveShellInit = ''
+  #     source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  #     # Si también quieres autosuggestions:
+  #     source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  #   '';
+  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
