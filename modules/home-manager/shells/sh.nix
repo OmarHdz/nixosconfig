@@ -20,6 +20,12 @@ let
 
     nrs="echo 'sudo nixos-rebuild switch --flake .' && sudo nixos-rebuild switch --flake .";
     hms="echo 'home-manager switch --flake .' && home-manager switch --flake .";
+
+    aq="sh ~/nixosconfig/docs/scripts/consultaAi.sh";
+    caq="sh ~/nixosconfig/docs/scripts/comandosQuery.sh";
+    saq="sh ~/nixosconfig/docs/scripts/streamConsulta.sh";
+    daq="sh ~/nixosconfig/docs/scripts/deekseekQuery.sh";
+
   };
 in
 {
