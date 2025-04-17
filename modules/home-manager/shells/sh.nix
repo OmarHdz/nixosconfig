@@ -43,7 +43,8 @@ in
         eval "$(direnv hook zsh)"
         # Bind ctrl-r but not up arrow
         eval "$(atuin init zsh --disable-up-arrow)"
-        # source ~/.special_keys
+        touch ~/.special_keys
+        source ~/.special_keys
      '';
 
     # --- Mueve la configuración de Oh My Zsh aquí ---
