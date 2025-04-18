@@ -28,6 +28,13 @@
           "template": "<p:green>\ue235 {{ if .Venv }} venv{{ end }}</>"
         },
         {
+          "type": "nix-shell",
+          "style": "powerline",
+          "foreground": "p:blue",
+          "background": "transparent",
+          "template": "<p:sky>{{ if .Env.IN_NIX_SHELL }}  NixShell-{{ .Type }} {{ end }}</>"
+        },
+        {
           "foreground": "#FFFFFF",
           "style": "plain",
           "template": "<p:blue> </> ",
