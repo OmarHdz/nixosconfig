@@ -10,6 +10,9 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true, desc = "Exec All" }
 )
 
+-- Ejecutar archivo Python actual en un panel tmux (F5)
+vim.api.nvim_set_keymap('n', '<leader>rp', ':w<CR>:silent !~/nixosconfig/docs/scripts/tmux-run-python.sh "%:p"<CR>:redraw!<CR>', {noremap = true, silent = true,  desc = "Exec python" })
+
 -- tab keymaps
 vim.keymap.set("n", "<leader>j", ":bn<cr>")
 vim.keymap.set("n", "<leader>h", ":bp<cr>")

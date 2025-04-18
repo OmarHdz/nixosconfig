@@ -1,0 +1,34 @@
+
+Neovim
+Commentar bloque gc
+Commentar linea gcc
+neovim -d good_code.py bad_code.py -diferncias entre archivos
+:windo diffthis
+En el explorer, <- regresa de carpeta y con alt + h, muestra las carpetas ocultas
+Puedo usar leap para saltar a los archivos
+Moverse entre files como vim, esp + esp + alt + s
+Terminal neovim, esp + f + T
+Config neovim, esp + f + c
+Toggle wrap, esp + u + w
+See hidden folders, esp + s + z, alt + h
+Buscar mapeos duplicados al final de checkhealt
+
+Tmux
+Lista todos los comandos de tmux, ctrl+b+?
+Lista las ventana con numero, ctrl + b, s 
+Lista las ventana y session, ctrl + b, w
+Muestra numero paneles, ctrl + b, q
+Guarda session, ctrl + b, ctrl + s 
+Restore session, ctrl + b, ctrl + r 
+Detach session (salir), ctrl + b, d
+Renombrar ventana, ctrl + b + (coma),
+
+Git
+gco - git checkout
+gcam - add and commit
+ggpush - git push origin 'mybranch'
+
+Github CLI 
+gh auth login
+gh repo list # Lista los repositorios remotos
+gh repo create mi-proyecot --private --source=. --remote=origin
