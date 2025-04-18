@@ -26,6 +26,7 @@ let
     saq="sh ~/nixosconfig/docs/scripts/streamConsulta.sh";
     daq="sh ~/nixosconfig/docs/scripts/deekseekQuery.sh";
     imgg="sh ~/nixosconfig/docs/scripts/imageGen.sh";
+    setd="sh ~/nixosconfig/docs/scripts/setDevEnv.sh";
 
   };
 in

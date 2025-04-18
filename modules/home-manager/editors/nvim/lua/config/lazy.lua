@@ -15,8 +15,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  -- Las siguientes dos lineas son para poder actualizar en nixos
   root = vim.fn.stdpath("data") .. "/lazy", -- Usa el directorio de datos en lugar de config
   lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json", -- Cambia la ubicación del lockfile
+  --
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },

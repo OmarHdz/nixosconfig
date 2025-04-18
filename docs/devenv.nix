@@ -12,13 +12,7 @@
       version = "3.11";
       venv.enable = true;
       uv.enable = true;
-      # venv.requirements = ''
-      #   requests
-      #   ipython
-      #   numpy
-      #   pandas
-      #   flask
-      # '';
+      # venv.requirements = '' flask '';
     };
 
   # https://devenv.sh/scripts/
