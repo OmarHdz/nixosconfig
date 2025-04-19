@@ -32,7 +32,7 @@
           "style": "powerline",
           "foreground": "p:blue",
           "background": "transparent",
-          "template": "<p:sky>{{ if .Env.IN_NIX_SHELL }}  NixShell-{{ .Type }}{{ end }}</>"
+          "template": "<p:green>{{ if .Env.IN_NIX_SHELL }}  NixShellEnv{{ end }}</>"
         },
         {
           "foreground": "#FFFFFF",

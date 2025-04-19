@@ -8,15 +8,15 @@ return {
   },
   opts = {
     ensure_installed = {
-      -- Linters
-      "ruff", -- Python
-      "mypy", -- Python para organizar los imports
-
-      -- Formatters
-      "prettier", -- JS/TS/HTML/CSS
-
-      -- LSP
-      "pyright", -- Python
+      -- -- Linters
+      -- "ruff", -- Python
+      -- "mypy", -- Python para organizar los imports
+      --
+      -- -- Formatters
+      -- "prettier", -- JS/TS/HTML/CSS
+      --
+      -- -- LSP
+      -- "pyright", -- Python
     },
   },
 }

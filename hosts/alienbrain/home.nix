@@ -6,6 +6,7 @@
     ../../modules/shells/sh.nix
     ../../modules/shells/zoxide.nix
     ../../modules/shells/git.nix
+    ../../modules/shells/direnv.nix
     # ../../modules/home-manager/multiplexer/tmux.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
