@@ -3,9 +3,9 @@
 {
 
   imports = [
-    ../../modules/home-manager/shells/sh.nix
-    ../../modules/home-manager/shells/zoxide.nix
-    ../../modules/home-manager/shells/git.nix
+    ../../modules/shells/sh.nix
+    ../../modules/shells/zoxide.nix
+    ../../modules/shells/git.nix
     # ../../modules/home-manager/multiplexer/tmux.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
@@ -116,12 +116,12 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    ".tmux.conf".source = ../../modules/home-manager/multiplexer/tmux.conf;
-    ".vimrc".source = ../../modules/home-manager/editors/vimrc;
-    ".config/nvim".source = ../../modules/home-manager/editors/nvim;
+    ".tmux.conf".source = ../../modules/multiplexer/tmux.conf;
+    ".vimrc".source = ../../modules/editors/vimrc;
+    ".config/nvim".source = ../../modules/editors/nvim;
     ".config/ohmyposh/mytheme.json".source = ../../modules/themes/mytheme.json;
-    ".config/yazi".source = ../../modules/home-manager/shells/yazi;
-    ".config/lazygit".source = ../../modules/home-manager/shells/lazygit;
+    ".config/yazi".source = ../../modules/shells/yazi;
+    ".config/lazygit".source = ../../modules/shells/lazygit;
 
   };
 

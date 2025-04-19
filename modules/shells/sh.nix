@@ -6,7 +6,7 @@ let
     ll = "ls -l";
     lg = "lazygit";
     ff = "yazi";
-    cat="bat --theme=default";
+    cat="bat -p --theme=default";
 
     uva="uv venv && echo 'source .venv/bin/activate' >> .envrc && direnv allow && clear";
     lh="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions";
