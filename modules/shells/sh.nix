@@ -27,6 +27,7 @@ let
     daq="sh ~/nixosconfig/docs/scripts/deekseekQuery.sh";
     imgg="sh ~/nixosconfig/docs/scripts/imageGen.sh";
     setd="sh ~/nixosconfig/docs/scripts/setDevEnv.sh";
+    setpy="sh ~/nixosconfig/docs/scripts/setDevEnv.sh";
 
   };
 in
