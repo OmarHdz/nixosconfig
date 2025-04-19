@@ -66,13 +66,13 @@
         {
           "foreground": "#FFFFFF",
           "style": "plain",
-          "template": "<p:sky>{{ .UserName }}</> <p:lgray>in</> <p:green>{{ .HostName }}</> ",
+          "template": "<p:sky>{{ .UserName }}</> <p:lgray>in</> <p:green>{{ .HostName }}</> <p:lgray>at</> ",
           "type": "session"
         },
         {
           "foreground": "p:lgray",
           "style": "plain",
-          "template": "[{{ .CurrentDate | date .Format }}]",
+          "template": "<p:sky>{{ .CurrentDate | date .Format }}</>",
           "type": "time"
         }
       ],
