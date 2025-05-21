@@ -2,6 +2,7 @@
 
 echo "Instalando nix multiuser --daemon para wsl"
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
+echo "Hay que abrir otra terminal para que cargue nix"
 
 echo "Agregando opciones expermientales"
 mkdir -p ~/.config/nix
@@ -13,6 +14,7 @@ echo "Descargando configuracion de home-manager y flake"
 nix shell nixpkgs#home-manager nixpkgs#gh --command sh -c "gh auth login && gh repo clone OmarHdz/nixosconfig -- --depth=1 "
 
 echo "Agregando opciones expermientales"
+cd nixosconfig
 nix shell nixpkgs#home-manager --command sh -c "home-manager switch -b bkup --flake ."
 
 # Opcional instalar home-manager
