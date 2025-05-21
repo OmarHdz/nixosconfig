@@ -29,8 +29,9 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
 
-    hello                        # Search history utility
-    zsh                        # Search history utility
+    # home-manager                        # Search history utility
+    # hello                        # Search history utility
+    # zsh                        # Search history utility
     atuin                        # Search history utility
     bat                          # Fancy show files, modern cat
     btop                         # Moniotorea el sistema
@@ -61,7 +62,7 @@
     mermaid-cli                  # Show mermaid diagrams in terminal
     neofetch                     # Get OS Info
     neovim                       # Best text editor ever
-    nodejs_20                    # Nodejs version 18
+    nodejs_22                    # Nodejs version 18
     oh-my-zsh                    # Package manager for zsh
     oh-my-posh                   # Style terminal
     python3                      # Python3

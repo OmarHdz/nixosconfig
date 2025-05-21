@@ -44,6 +44,7 @@ in
     autosuggestion = {
       enable = true;
     };
+    # loginShell = true;
 
     initExtra = ''
         eval "$(oh-my-posh init zsh --config '${config.xdg.configHome}/ohmyposh/mytheme.json')"
@@ -79,11 +80,27 @@ in
   };
 
   # programs.bash.enable = true;
+	# # Cargar el entorno de Nix
+	# if [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
+	# . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+	# fi
   programs.bash = {
     enable = true;
     shellAliases = myAliases;
     initExtra = ''
-        eval "$(oh-my-posh init bash --config '${config.xdg.configHome}/ohmyposh/mytheme.json')"
+    if [ -x "$(command -v zsh)" ] && [ "$(basename "$SHELL")" != "zsh" ] && [ -n "$PS1" ]; then
+      # Asegúrate de que el PATH de Nix esté cargado antes de intentar ejecutar zsh
+      # (esto ya debería estar más arriba en tu .bashrc como discutimos antes)
+      # if [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
+      #   . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+      # fi
+      # Comprueba de nuevo si zsh existe DESPUÉS de cargar el perfil de Nix
+      if [ -x "$(command -v zsh)" ]; then
+          export SHELL=$(which zsh) # Establece la variable SHELL correctamente para Zsh
+          exec $(which zsh) -l     # Ejecuta zsh como shell de login
+      fi
+    fi
+    eval "$(oh-my-posh init bash --config '${config.xdg.configHome}/ohmyposh/mytheme.json')"
      '';
   };
 
