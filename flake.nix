@@ -1,6 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05"; # <--- ¡CAMBIA ESTO!
+    # nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager"; # Usar rama principal o una release como 24.05
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,7 +48,7 @@
      homeConfigurations = {
        # Asegúrate que 'nixos' aquí es tu nombre de usuario real
        # Puedes nombrarlo como quieras, pero suele coincidir con el usuario
-       "nixos" = home-manager.lib.homeManagerConfiguration {
+       "myuser" = home-manager.lib.homeManagerConfiguration {
          inherit pkgs;
          # Pasa argumentos extras si home.nix los necesita (como 'system')
          extraSpecialArgs = { inherit system; };
