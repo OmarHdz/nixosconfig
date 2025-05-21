@@ -2,7 +2,8 @@
 # https://www.youtube.com/watch?v=cZDiqGWPHKI
 # https://www.youtube.com/watch?v=hLxyENmWZSQ
 Instalar nix
-sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --no-daemon
+# no usar sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --no-daemon
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 
 Agregamos el channel unstable o master
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
@@ -11,13 +12,16 @@ nix-channel --update
 Run the Home Manager installation command and create the first Home Manager generation:
 nix-shell '<home-manager>' -A install
 
+sh```
 mkdir -p ~/.config/nix
 touch ~/.config/nix/nix.conf
 echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 echo "accept-flake-config = true" >> ~/.config/nix/nix.conf
+s```
 
-nix shell nixpkgs#home-manager nixpkgs#gh --command sh -c "gh auth login && gh repo clone OmarHdz/nixosconf
-ig -- --depth=1 "
+nix shell nixpkgs#home-manager nixpkgs#gh --command sh -c "gh auth login && gh repo clone OmarHdz/nixosconfig -- --depth=1 "
+nix shell nixpkgs#home-manager --command sh -c "home-manager switch -b bkup --flake ."
+home-manager switch -b bkup --flake .
 
 programs.zsh.enabled = true
 nix --extra-experimental-features nix-command --extra-experimental-features flakes shell nixpkgs#home-manager  
