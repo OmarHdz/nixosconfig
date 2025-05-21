@@ -29,6 +29,7 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
 
+    hello                        # Search history utility
     zsh                        # Search history utility
     atuin                        # Search history utility
     bat                          # Fancy show files, modern cat
