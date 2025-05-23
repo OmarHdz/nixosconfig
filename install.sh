@@ -3,6 +3,7 @@
 echo "Instalando nix multiuser --daemon para wsl"
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 echo "Hay que abrir otra terminal para que cargue nix"
+exec bash
 
 echo "Agregando opciones expermientales"
 mkdir -p ~/.config/nix
