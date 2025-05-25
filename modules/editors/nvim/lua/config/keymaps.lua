@@ -2,6 +2,11 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- Ejecutar archivo Python actual en un panel tmux (F5)
+vim.api.nvim_set_keymap('n', '<leader>rp',
+  ':w<CR>:silent !~/nixosconfig/docs/scripts/tmux-run-python.sh "%:p"<CR>:redraw!<CR>',
+  { noremap = true, silent = true, desc = "Exec python" })
+
 -- Ejecuta python ligado a mi funcion en opctions
 vim.api.nvim_set_keymap(
   "n",
@@ -10,8 +15,13 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true, desc = "Exec All" }
 )
 
--- Ejecutar archivo Python actual en un panel tmux (F5)
-vim.api.nvim_set_keymap('n', '<leader>rp', ':w<CR>:silent !~/nixosconfig/docs/scripts/tmux-run-python.sh "%:p"<CR>:redraw!<CR>', {noremap = true, silent = true,  desc = "Exec python" })
+-- Ejecuta python ligado a mi funcion en opctions
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>ri",
+  ":lua RunIPythonInTmux()<CR>",
+  { noremap = true, silent = true, desc = "Open Ipython" }
+)
 
 -- tab keymaps
 vim.keymap.set("n", "<leader>j", ":bn<cr>")
