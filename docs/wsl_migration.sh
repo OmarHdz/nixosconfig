@@ -3,6 +3,7 @@ wsl -l -v
 
 # Apagar wsl
 wsl --shutdown
+wsl --terminate <Distribution Name>
 
 # Exportar distribucion actual
 wsl --export Ubuntu-20.04 V:\wsl\ubuntu20.tar
