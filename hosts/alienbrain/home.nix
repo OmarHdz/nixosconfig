@@ -62,11 +62,11 @@
     mermaid-cli                  # Show mermaid diagrams in terminal
     neofetch                     # Get OS Info
     neovim                       # Best text editor ever
-    nodejs_22                    # Nodejs version 18
+    # nodejs_22                    # Nodejs version 18
     oh-my-zsh                    # Package manager for zsh
     oh-my-posh                   # Style terminal
-    python3                      # Python3
-    python312Packages.pylatexenc # Latex2tex convert text to latex render
+    # python3                      # Python3
+    # python312Packages.pylatexenc # Latex2tex convert text to latex render
     ripgrep                      # Modern grep
     sd                           # Modern sed
     speedread                    # speedread practice
@@ -78,7 +78,7 @@
     tmux                         # Multi terminal managment
     tree-sitter                  # Language parser for nvim
     ueberzugpp                   # Backend to see image in nvim
-    uv                           # Fast packages manager python
+    # uv                           # Fast packages manager python
     vim                          # Great old text editor
     viu                          # Fancy show images in terminal
     wezterm                      # Terminal emulator for gpu

@@ -18,6 +18,18 @@ echo "Agregando opciones expermientales"
 cd nixosconfig
 nix shell nixpkgs#home-manager --command sh -c "home-manager switch -b bkup --flake ."
 
+echo "Configuracion de python para que no interfiera con nix"
+sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt update
+sudo apt install python3.12 python3.12-venv python3.12-dev
+
+source $HOME/.local/bin/env
+sudo curl -LsSf https://astral.sh/uv/install.sh | sh
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
+./createuvenv.sh create
+
 # Opcional instalar home-manager
 # nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 # nix-channel --update
