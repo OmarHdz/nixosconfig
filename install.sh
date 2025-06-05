@@ -26,8 +26,12 @@ sudo apt install python3.12 python3.12-venv python3.12-dev
 source $HOME/.local/bin/env
 sudo curl -LsSf https://astral.sh/uv/install.sh | sh
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.zshrc
+nvm install --lts
+# sudo apt install build-essential -y
 
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 ./createuvenv.sh create
 
 # Opcional instalar home-manager
