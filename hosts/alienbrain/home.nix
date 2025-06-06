@@ -70,6 +70,7 @@
     ripgrep                      # Modern grep
     sd                           # Modern sed
     speedread                    # speedread practice
+    sqlite                       # sqlite client
     stow                         # Symlinks dotfiles
     # texlive                      # Latex
     timg                         # Image in terminal
