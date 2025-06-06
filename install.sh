@@ -21,7 +21,7 @@ nix shell nixpkgs#home-manager --command sh -c "home-manager switch -b bkup --fl
 echo "Configuracion de python para que no interfiera con nix"
 sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt update -y
-sudo apt install python3.12 python3.12-venv python3.12-dev
+sudo apt install python3.12 python3.12-venv python3.12-dev -y
 
 sudo curl -LsSf https://astral.sh/uv/install.sh | sh
 source $HOME/.local/bin/env
