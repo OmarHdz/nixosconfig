@@ -13,3 +13,10 @@ wsl --unregister Ubuntu-20.04
 
 # Borrar distribucion
 wsl --import Ubuntu-20.04 V:\wsl\ubuntu20 V:\wsl\ubuntu20.tar --version 2
+
+vim /etc/wsl.conf
+
+[user]
+default = myuser
+
+wsl --shutdown
