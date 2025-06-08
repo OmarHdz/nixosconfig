@@ -13,7 +13,7 @@ fi
 # URL de la API
 #MODEL_LLM=gemini-1.5-flash
 #MODEL_LLM=gemini-2.0-flash
-MODEL_LLM=gemini-2.0-pro-exp-02-05
+MODEL_LLM=gemini-2.0-flash
 MODEL_API_KEY=${GEMINI_API_KEY}
 BASE_URL=https://generativelanguage.googleapis.com/v1beta/models
 API_URL="${BASE_URL}/${MODEL_LLM}:generateContent?key=${MODEL_API_KEY}"
