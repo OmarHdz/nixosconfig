@@ -5,6 +5,7 @@ let
     v = "nvim";
     ll = "ls -l";
     lg = "lazygit";
+    ldk = "lazydocker";
     ff = "yazi";
     cat="bat -p --theme=default";
 
@@ -12,7 +13,7 @@ let
     lh="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions";
     ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
     lst="eza --color=always --tree --level=2 --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
-    lst2="eza --color=always --tree --level=2 --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
+    lst2="eza --color=always --tree --level=3 --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
     lp="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions";
 
     show="wezterm imgcat --tmux-passthru=enable --hold";
