@@ -36,20 +36,19 @@ vim.keymap.set("n", "<c-l>", ":wincmd l<cr>")
 
 -- Copiar al portapapeles del computador
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-
+-- Cambia la palabra como nvim nnoremap <SPACE>c *Ncgn
+vim.keymap.set("n", "<leader>cw", "*Ncgn", { desc = "Replace Word" })
+-- Reemplar la palabra como nvim nnoremap <SPACE>r diw"0P
+vim.keymap.set("n", "<leader>rw", 'diw"0P', { desc = "Replace with yank" })
 -- Activar/Desactivar colores
 vim.keymap.set("n", "<leader>co", ":ColorizerToggle<cr>")
-
 -- Select all text
 vim.keymap.set("n", "<leader>i", "ggVG<cr>")
-
 -- Go to next diagnostic message
 vim.keymap.set("n", "<leader>dn", "<Cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Sig diagnostic" })
-
 -- Show Mensages de diagnostic en buffer para copiarlos
 -- https://stackoverflow.com/questions/74099090/how-do-you-copy-text-from-a-diagnostic-float-window-in-neovim-lunarvim
 vim.keymap.set("n", "<leader>dd", "<Cmd>lua vim.diagnostic.setqflist()<CR>", { desc = "Mostrar diagnostic" })
-
 -- Go to next diagnostic message
 vim.keymap.set("n", "<leader>dn", "<Cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Sig diagnostic" })
 

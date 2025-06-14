@@ -13,3 +13,12 @@ function RunPythonInTmux()
   vim.fn.system(tmux_cmd)
   vim.cmd("redraw!")
 end
+
+function RunIPythonInTmux()
+  vim.cmd("w")
+  local file = vim.fn.expand("%")
+  local command = string.format("echo 'Abriendo ipython';  ipython")
+  local tmux_cmd = string.format('tmux split-window -d -v -p 20 "%s"', command)
+  vim.fn.system(tmux_cmd)
+  vim.cmd("redraw!")
+end

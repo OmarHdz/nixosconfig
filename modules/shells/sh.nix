@@ -12,6 +12,8 @@ let
     lh="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions";
     ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
     lst="eza --color=always --tree --level=2 --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
+    lst2="eza --color=always --tree --level=2 --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
+    lp="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions";
 
     show="wezterm imgcat --tmux-passthru=enable --hold";
     showi="echo 'Usar sin tmux' && timg -p 's'";
@@ -28,7 +30,7 @@ let
     imgg="sh ~/nixosconfig/docs/scripts/imageGen.sh";
     setd="sh ~/nixosconfig/docs/scripts/setDevEnv.sh";
     setpy="sh ~/nixosconfig/docs/scripts/setDevEnv.sh";
-
+    tabla="bash ~/nixosconfig/docs/scripts/tabla.sh";
   };
 in
 {
@@ -47,6 +49,7 @@ in
     # loginShell = true;
 
     initExtra = ''
+        export PATH="/mnt/c/Users/omarh/AppData/Local/Programs/Microsoft VS Code/bin:$PATH"
         eval "$(oh-my-posh init zsh --config '${config.xdg.configHome}/ohmyposh/mytheme.json')"
         test -z "$TMUX" && tmux
         eval "$(zoxide init --cmd cd zsh)"

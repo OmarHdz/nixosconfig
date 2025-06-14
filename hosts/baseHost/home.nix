@@ -57,6 +57,7 @@
     imagemagick                  # Manejo imagenes, lo pide nvim
     jq                           # Manejo de json en terminal
     lazygit                      # Interactive git ui
+    lazydocker                      # Interactive git ui
     lua5_1                       # Lua5.1 for nvim
     luarocks                     # luarocks for nvim
     mermaid-cli                  # Show mermaid diagrams in terminal
