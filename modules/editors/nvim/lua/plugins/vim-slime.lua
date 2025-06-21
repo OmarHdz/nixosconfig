@@ -11,6 +11,7 @@ return {
     -- Mapeo para modo normal (enviar movimiento/text-object)
     vim.keymap.set("x", "<leader>rr", "<Plug>SlimeRegionSend"),
     vim.keymap.set("n", "<leader>rr", "<Plug>SlimeMotionSend<cr>j"),
+    vim.keymap.set("n", "<leader>rd", ":SlimeSend1 exit<cr>"),
 
     keys = {
       { "<leader>rc", "<cmd>SlimeConfig<cr>", desc = "Slime Config" },
