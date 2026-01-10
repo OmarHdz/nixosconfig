@@ -12,8 +12,9 @@
     # Usa 'extraConfig' para la mayoría de las opciones
     extraConfig = {
       # init.defaultBranch = "main"; # Cambia la rama por defecto a 'main'
+      init.defaultBranch = "main"; # Cambia la rama por defecto a 'main'
       # pull.rebase = true;          # Prefiere rebase en lugar de merge al hacer pull
-      # github.user = "tu_usuario_github"; # Útil para herramientas como 'hub' o 'gh'
+      github.user = "OmarHdz"; # Útil para herramientas como 'hub' o 'gh'
       # # ... otras opciones ...
       #
       # # Ejemplo de alias
