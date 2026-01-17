@@ -9,7 +9,7 @@ let
     ff = "yazi";
     cat="bat -p --theme=default";
 
-    uva="uv venv && echo 'source .venv/bin/activate' >> .envrc && direnv allow && clear";
+    uva="uv venv && uv init . && git init . && echo 'source .venv/bin/activate' >> .envrc && direnv allow && clear";
     lh="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions";
     ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
     lst="eza --color=always --tree --level=2 --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
@@ -32,6 +32,7 @@ let
     setd="sh ~/nixosconfig/docs/scripts/setDevEnv.sh";
     setpy="sh ~/nixosconfig/docs/scripts/setDevEnv.sh";
     tabla="bash ~/nixosconfig/docs/scripts/tabla.sh";
+    tm="sh ~/nixosconfig/docs/scripts/tmux-plantilla.sh";
   };
 in
 {
@@ -63,6 +64,65 @@ in
         export NVM_DIR="$HOME/.nvm"
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
         [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+        # Editor con sudoedit
+        export EDITOR="nvim"
+        export VISUAL="nvim"
+
+        # Ejecuta gitcheck en la terminal para revisar todos los repositorios en la carpeta actual
+        # Se compara todos los cambios con los repositorios remotos origin
+        function gitcheck() {
+            local TARGET_DIR="''${1:-.}"
+            if [ ! -d "$TARGET_DIR" ]; then
+                echo "❌ Error: La carpeta '$TARGET_DIR' no existe."
+                return 1
+            fi
+            (
+                cd "$TARGET_DIR" || return
+                echo "🔍 Revisando repositorios en: $(pwd)"
+                for d in ./*/(N); do
+                    if [ -d "$d/.git" ]; then
+                        NAME=$(basename "$d")
+                        (
+                            cd "$d"
+                            git fetch -q
+                            STATUS_BRANCH=$(git status -sb)
+                            STATUS_FILES=$(git status --porcelain)
+                            MSG=""
+                            if echo "$STATUS_BRANCH" | grep -q "behind"; then
+                                MSG="$MSG ❌ BEHIND"
+                            fi
+                            if echo "$STATUS_BRANCH" | grep -q "ahead"; then
+                                MSG="$MSG ⬆️ PUSH"
+                            fi
+                            if [ -n "$STATUS_FILES" ]; then
+                                MSG="$MSG ✏️ DIRTY"
+                            fi
+                            if [ -z "$MSG" ]; then
+                                echo "✅ $NAME"
+                            else
+                                echo "⚠️  $NAME ->$MSG"
+                            fi
+                        )
+                    fi
+                done
+            )
+        }
+
+        # Ver puertos
+        function puertos() {
+          for s in $(systemctl list-units --type=service --state=running --no-legend | awk '{print $1}'); do
+            pid=$(systemctl show -p MainPID --value $s)
+            if [ "$pid" != "0" ]; then
+              ports=$(sudo ss -ltnp | grep "pid=$pid" | awk '{print $4}')
+              if [ ! -z "$ports" ]; then
+                echo "$s (PID $pid):"
+                echo "$ports"
+                echo
+              fi
+            fi
+          done
+        }
      '';
 
     # --- Mueve la configuración de Oh My Zsh aquí ---
