@@ -23,11 +23,14 @@ max_width       = 600
 max_height      = 900
 cache_dir       = ""
 image_delay     = 30
-image_filter    = "triangle"
-image_quality   = 75
+# image_filter    = "triangle"
+# image_quality   = 75
 sixel_fraction  = 15
 ueberzug_scale  = 1
 ueberzug_offset = [ 0, 0, 0, 0 ]
+image_filter = "lanczos3"
+image_quality = 90
+preview_protocol = "wezterm"
 
 [opener]
 edit = [
@@ -52,10 +55,13 @@ extract = [
 	{ run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
 	{ run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
 ]
+# play = [
+# 	{ run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
+# 	{ run = 'mpv --force-window %*', orphan = true, for = "windows" },
+# 	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
+# ]
 play = [
-	{ run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
-	{ run = 'mpv --force-window %*', orphan = true, for = "windows" },
-	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
+	{ run = 'wezterm imgcat "$@"', block = true, desc = "View image" }
 ]
 
 [open]

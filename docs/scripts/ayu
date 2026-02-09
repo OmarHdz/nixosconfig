@@ -1,0 +1,195 @@
+#!/bin/bash
+
+# CONFIGURACIÓN: Cambia esta ruta a la carpeta donde guardes tus notas
+NOTAS_DIR="$HOME/nixosconfig/docs/ayudocs"
+
+# Función de ayuda interna
+mostrar_ayuda() {
+  echo "Uso: ayu [opciones] <herramienta> [secciones...]"
+  echo "Opciones:"
+  echo "  -l    Listar todas las herramientas disponibles"
+  echo "  -s    Muestra solo el índice de secciones de una herramienta"
+  echo ""
+  echo "Ejemplos:"
+  echo "  ayu -l"
+  echo "  ayu podman"
+  echo "  ayu -s podman"
+  echo "  ayu podman Contenedor Borrar"
+  exit 1
+}
+
+# 1. BANDERA -l: Listar herramientas
+if [ "$1" == "-l" ]; then
+  echo "Herramientas documentadas en $NOTAS_DIR:"
+  # Listar archivos, quitar extensiones .txt y .md, y eliminar duplicados
+  ls "$NOTAS_DIR" | grep -E "\.(txt|md)$" | sed 's/\.[^.]*$//' | sort -u | column
+  exit 0
+fi
+
+if [ -z "$1" ]; then
+  mostrar_ayuda
+fi
+
+# 2. BANDERA -s: Mostrar secciones
+SOLO_SECCIONES=false
+if [ "$1" == "-s" ]; then
+  SOLO_SECCIONES=true
+  shift
+fi
+
+HERRAMIENTA=$1
+ARCHIVO="$NOTAS_DIR/$HERRAMIENTA.txt"
+
+# Verificar si el archivo existe (txt o md)
+if [ ! -f "$ARCHIVO" ]; then
+  if [ -f "$NOTAS_DIR/$HERRAMIENTA.md" ]; then
+    ARCHIVO="$NOTAS_DIR/$HERRAMIENTA.md"
+  else
+    echo "Error: No existe información para '$HERRAMIENTA'"
+    exit 1
+  fi
+fi
+
+# --- FUNCIONALIDAD: SOLO SECCIONES (-s) ---
+if [ "$SOLO_SECCIONES" = true ]; then
+  grep "^#" "$ARCHIVO"
+  exit 0
+fi
+
+# --- FUNCIONALIDAD: MOSTRAR TODO EL ARCHIVO ---
+if [ -z "$2" ]; then
+  cat "$ARCHIVO"
+  exit 0
+fi
+
+# --- FUNCIONALIDAD: BÚSQUEDA POR NIVELES ---
+BUSQUEDA=""
+LEVEL=""
+
+if [ ! -z "$4" ]; then
+  BUSQUEDA="$4"
+  LEVEL="###"
+elif [ ! -z "$3" ]; then
+  BUSQUEDA="$3"
+  LEVEL="##"
+elif [ ! -z "$2" ]; then
+  BUSQUEDA="$2"
+  LEVEL="#"
+fi
+
+# AWK para extraer la sección exacta
+awk -v search="$BUSQUEDA" -v lvl="$LEVEL" '
+    BEGIN { IGNORECASE = 1; printing = 0; }
+    
+    $0 ~ "^" lvl "[ ]+" {
+        if ($0 ~ search) {
+            printing = 1;
+            print;
+            next;
+        }
+    }
+    
+    $0 ~ "^#+" { 
+        if (printing) {
+            match($0, /^#+/);
+            if (RLENGTH <= length(lvl)) {
+                exit;
+            }
+        }
+    }
+    
+    printing { print }
+' "$ARCHIVO"
+
+# # Función de ayuda interna
+# mostrar_ayuda() {
+#   echo "Uso: ayu [-s] <herramienta> [seccion] [subseccion] [sub-subseccion]"
+#   echo "Ejemplo: ayu podman Contenedor"
+#   echo "Opciones:"
+#   echo "  -s    Muestra solo el índice de secciones"
+#   exit 1
+# }
+#
+# if [ -z "$1" ]; then
+#   mostrar_ayuda
+# fi
+#
+# SOLO_SECCIONES=false
+# if [ "$1" == "-s" ]; then
+#   SOLO_SECCIONES=true
+#   shift
+# fi
+#
+# HERRAMIENTA=$1
+# ARCHIVO="$NOTAS_DIR/$HERRAMIENTA.txt"
+#
+# # Verificar si el archivo existe
+# if [ ! -f "$ARCHIVO" ]; then
+#   if [ -f "$NOTAS_DIR/$HERRAMIENTA.md" ]; then
+#     ARCHIVO="$NOTAS_DIR/$HERRAMIENTA.md"
+#   else
+#     echo "Error: No existe información para '$HERRAMIENTA'"
+#     exit 1
+#   fi
+# fi
+#
+# # --- FUNCIONALIDAD: SOLO SECCIONES (-s) ---
+# if [ "$SOLO_SECCIONES" = true ]; then
+#   grep "^#" "$ARCHIVO"
+#   exit 0
+# fi
+#
+# # --- FUNCIONALIDAD: MOSTRAR TODO EL ARCHIVO ---
+# if [ -z "$2" ]; then
+#   cat "$ARCHIVO"
+#   exit 0
+# fi
+#
+# # --- FUNCIONALIDAD: BÚSQUEDA POR NIVELES (AJUSTADO) ---
+# BUSQUEDA=""
+# LEVEL=""
+#
+# # Mapeo de niveles:
+# # $2 (Seccion)     -> #
+# # $3 (Subseccion)  -> ##
+# # $4 (Sub-sub)     -> ###
+#
+# if [ ! -z "$4" ]; then
+#   BUSQUEDA="$4"
+#   LEVEL="###"
+# elif [ ! -z "$3" ]; then
+#   BUSQUEDA="$3"
+#   LEVEL="##"
+# elif [ ! -z "$2" ]; then
+#   BUSQUEDA="$2"
+#   LEVEL="#"
+# fi
+#
+# # AWK mejorado para manejar bien los espacios y niveles
+# awk -v search="$BUSQUEDA" -v lvl="$LEVEL" '
+#     BEGIN { IGNORECASE = 1; printing = 0; }
+#
+#     # Busca la linea que empieza exactamente con el nivel de hashes y el texto
+#     $0 ~ "^" lvl "[ ]+" {
+#         # Verificamos si la línea contiene el término de búsqueda
+#         if ($0 ~ search) {
+#             printing = 1;
+#             print;
+#             next;
+#         }
+#     }
+#
+#     # Si estamos imprimiendo y encontramos un encabezado...
+#     $0 ~ "^#+" {
+#         if (printing) {
+#             # Si el nuevo encabezado es del mismo nivel o superior (menos o igual hashes), parar
+#             # Ejemplo: si buscamos en # y aparece otro #, paramos.
+#             match($0, /^#+/);
+#             if (RLENGTH <= length(lvl)) {
+#                 exit;
+#             }
+#         }
+#     }
+#
+#     printing { print }
+# ' "$ARCHIVO"

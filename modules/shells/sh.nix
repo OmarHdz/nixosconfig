@@ -33,6 +33,7 @@ let
     setpy="sh ~/nixosconfig/docs/scripts/setDevEnv.sh";
     tabla="bash ~/nixosconfig/docs/scripts/tabla.sh";
     tm="sh ~/nixosconfig/docs/scripts/tmux-plantilla.sh";
+    ayu="~/nixosconfig/docs/scripts/ayu";
   };
 in
 {

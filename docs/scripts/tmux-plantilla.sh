@@ -57,14 +57,15 @@ if [ $? != 0 ]; then
   # Crear nueva ventana (-n nombre)
   tmux new-window -t "$SESSION_NAME" -n 'Terminal' -c "$DIR_PATH"
 
+  tmux new-window -t "$SESSION_NAME" -n 'Split' -c "$DIR_PATH"
   # Dividir la ventana 2 en dos paneles (horizontalmente)
-  tmux split-window -h -t "$SESSION_NAME:6" -c "$DIR_PATH"
+  tmux split-window -v -t "$SESSION_NAME:7" -c "$DIR_PATH"
 
   # Redimensionar si quieres (opcional)
-  tmux resize-pane -t "$SESSION_NAME:6.1" -x 80%
+  tmux resize-pane -t "$SESSION_NAME:7.1" -x 80%
 
   # Seleccionar el primer panel de esta ventana
-  tmux select-pane -t "$SESSION_NAME:6.1"
+  tmux select-pane -t "$SESSION_NAME:7.1"
 
   # ==========================================
   # VOLVER AL INICIO

@@ -66,9 +66,11 @@
     # nodejs_22                    # Nodejs version 18
     oh-my-zsh                    # Package manager for zsh
     oh-my-posh                   # Style terminal
+    poppler-utils                # Visor de pdfs
     # python3                      # Python3
     # python312Packages.pylatexenc # Latex2tex convert text to latex render
     ripgrep                      # Modern grep
+    resvg                        # Visor de svg para yazi
     sd                           # Modern sed
     speedread                    # speedread practice
     sqlite                       # sqlite client
