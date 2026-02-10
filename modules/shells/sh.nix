@@ -20,6 +20,7 @@ let
     showi="echo 'Usar sin tmux' && timg -p 's'";
     showw="wslview";
     showf="feh";
+    showv="viu";
 
     nrs="echo 'sudo nixos-rebuild switch --flake .' && sudo nixos-rebuild switch --flake .";
     hms="echo 'home-manager switch --flake .' && home-manager switch --flake .";
