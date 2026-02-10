@@ -9,15 +9,14 @@ return {
 
     provider = "gemini",
 
-
     providers = {
       gemini = {
         endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
         model = "gemini-2.0-flash", -- your desired model (or use gpt-4o, etc.)
         -- model = "gemini-2.0-pro-exp-02-05", -- your desired model (or use gpt-4o, etc.)
-        timeout = 30000,            -- timeout in milliseconds
+        timeout = 30000, -- timeout in milliseconds
         extra_request_body = {
-          temperature = 0,          -- adjust if needed
+          temperature = 0, -- adjust if needed
           max_tokens = 4096,
           -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
         },
@@ -44,7 +43,7 @@ return {
       ---@alias AvantePosition "right" | "left" | "top" | "bottom" | "smart"
       position = "right",
       wrap = true, -- similar to vim.o.wrap
-      width = 30,  -- default % based on available width in vertical layout
+      width = 30, -- default % based on available width in vertical layout
       height = 30, -- default % based on available height in horizontal layout
     },
   },
@@ -57,12 +56,12 @@ return {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
-    "echasnovski/mini.pick",         -- for file_selector provider mini.pick
+    "nvim-mini/mini.pick", -- for file_selector provider mini.pick
     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-    "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
-    "ibhagwan/fzf-lua",              -- for file_selector provider fzf
-    "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-    "zbirenbaum/copilot.lua",        -- for providers='copilot'
+    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+    "ibhagwan/fzf-lua", -- for file_selector provider fzf
+    "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+    "zbirenbaum/copilot.lua", -- for providers='copilot'
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",

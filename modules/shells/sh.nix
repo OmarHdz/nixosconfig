@@ -34,6 +34,8 @@ let
     tabla="bash ~/nixosconfig/docs/scripts/tabla.sh";
     tm="sh ~/nixosconfig/docs/scripts/tmux-plantilla.sh";
     ayu="~/nixosconfig/docs/scripts/ayu";
+    brain="cd /mnt/c/Users/omarh/Documents/Obsidian Vault && nvim .";
+
   };
 in
 {

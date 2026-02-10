@@ -1,5 +1,5 @@
 return {
-  "williamboman/mason.nvim",
+  "mason-org/mason.nvim",
   keys = {
     -- { "<leader>t", "", desc = "+test" },
     { "<leader>cj", vim.lsp.buf.hover, desc = "LSP Hover" },

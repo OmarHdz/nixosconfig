@@ -30,7 +30,8 @@ return {
 
     -- Completado de enlaces [[...]]
     completion = {
-      nvim_cmp = true,
+      nvim_cmp = false,
+      blink = true,
       min_chars = 2,
     },
 

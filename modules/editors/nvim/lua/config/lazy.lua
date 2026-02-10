@@ -21,14 +21,27 @@ require("lazy").setup({
   --
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    { "LazyVim/LazyVim", 
+      import = "lazyvim.plugins",
+      opts = {
+        news = {
+          lazyvim = false,
+          neovim = false,
+        },
+      },
+    },
     -- importante para correr opt.adapters de neotest
     -- https://www.youtube.com/watch?v=7Nt8n3rjfDY
     { import = "lazyvim.plugins.extras.test.core" },
     { import = "lazyvim.plugins.extras.dap.core" },
-    { import = "lazyvim.plugins.extras.lang.markdown" },
+    -- { import = "lazyvim.plugins.extras.lang.markdown" },
     -- import/override with your plugins
     { import = "plugins" },
+
+  },
+  news = {
+    lazyvim = false,
+    neovim = false,
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
