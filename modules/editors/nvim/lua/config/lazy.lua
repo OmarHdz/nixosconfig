@@ -26,6 +26,7 @@ require("lazy").setup({
     -- https://www.youtube.com/watch?v=7Nt8n3rjfDY
     { import = "lazyvim.plugins.extras.test.core" },
     { import = "lazyvim.plugins.extras.dap.core" },
+    { import = "lazyvim.plugins.extras.lang.markdown" },
     -- import/override with your plugins
     { import = "plugins" },
   },
