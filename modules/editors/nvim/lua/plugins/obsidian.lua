@@ -9,27 +9,27 @@ return {
     "nvim-treesitter/nvim-treesitter",
   },
 
-  -- Ponemos todo dentro de CONFIG para evitar errores de Lazy
   config = function()
     require("obsidian").setup({
-
       workspaces = {
         {
           name = "personal",
-          -- IMPORTANTE: Cambia esto a la ruta real de tu bóveda.
-          -- Si usas WSL y la bóveda está en Windows:
           path = "/mnt/c/Users/omarh/Documents/ObsidianVault",
         },
       },
-      -- Directorio para plantillas más complejas (opcional)
+      daily_notes = {
+        folder = "1_Inbox",
+        date_format = "%Y-%m-%d",
+        template = nil,
+      },
+
+      -- Configuración de plantillas
       templates = {
         subdir = "3_Attachments/Templates",
         date_format = "%Y-%m-%d",
         time_format = "%H:%M",
+        substitutions = {},
       },
-
-      -- Configuración de notas diarias
-      -- daily_notes = { folder = "1_Inbox" date_format = "%Y-%m-%d", template = nil, },
 
       completion = {
         nvim_cmp = false,
@@ -52,7 +52,7 @@ return {
         },
       },
 
-      -- GENERACIÓN DE ID
+      -- 1. GENERACIÓN DE ID (Solo se ejecuta al CREAR el archivo)
       note_id_func = function(title)
         local suffix = ""
         if title ~= nil then
@@ -65,24 +65,47 @@ return {
         end
       end,
 
-      -- GENERACIÓN DE FRONTMATTER
       note_frontmatter_func = function(note)
-        -- Si el nombre del archivo no tiene ID numérico, generamos uno basado en la fecha
-        if note.title then
-          note.id = os.date("%Y%m%d%H%M")
+        -- 1. Lógica del ID (Forzar numérico)
+        local id_numerico = note.id
+        if string.len(note.id) < 12 or tonumber(note.id) == nil then
+          id_numerico = tostring(os.date("%Y%m%d%H%M"))
         end
 
+        -- 2. Lógica de Aliases (Añadir título como alias)
+        local mis_aliases = note.aliases
+        if note.title and note.title ~= id_numerico and not note.aliases[1] then
+          mis_aliases = { note.title }
+        end
+
+        -- 3. Lógica de Tags (SOLO SI ES NUEVA)
+        local mis_tags = note.tags
+
+        -- Verificamos si es una nota nueva:
+        -- Una nota es nueva si no tiene metadata previa (note.metadata es nil o vacío).
+        local es_nueva = note.metadata == nil or vim.tbl_isempty(note.metadata)
+
+        if es_nueva and #mis_tags == 0 then
+          mis_tags = { "status/semilla", "tipo/procedimiento" }
+        end
+
+        -- 4. CREAR LA TABLA 'out' (Aquí estaba tu error antes, faltaba esto)
         local out = {
-          id = note.id,
-          aliases = note.aliases,
-          tags = note.tags,
-          created = os.date("%Y-%m-%d %H:%M"),
-          updated = os.date("%Y-%m-%d %H:%M"),
+          id = id_numerico,
+          aliases = mis_aliases,
+          tags = mis_tags,
         }
 
-        if note.title and not note.aliases[1] then
-          note.aliases = { note.title }
+        -- 5. Lógica de Fechas
+        -- Si la nota ya tiene fecha de creación (metadata), la respetamos.
+        if note.metadata ~= nil and note.metadata["created"] ~= nil then
+          out.created = note.metadata["created"]
+        else
+          out.created = os.date("%Y-%m-%d %H:%M")
         end
+
+        -- La fecha de actualización siempre es ahora
+        out.updated = os.date("%Y-%m-%d %H:%M")
 
         return out
       end,
@@ -90,20 +113,12 @@ return {
       disable_frontmatter = false,
     })
 
-    -- === TUS ATAJOS PERSONALIZADOS ===
+    -- ATAJOS
     local keymap = vim.keymap.set
-    local options = { noremap = true, silent = true }
-
-    -- zkn: Crear nueva nota
-    keymap("n", "zkn", ":ObsidianNew ", { desc = "Zettelkasten [N]ueva Nota" })
-
-    -- zkt: Insertar Template
-    keymap("n", "zkt", ":ObsidianTemplate ", { desc = "Zettelkasten [T]emplate" })
-
-    -- zks: Buscar notas
+    keymap("n", "zkn", ":ObsidianNew ", { desc = "Zettelkasten [N]ew" })
+    keymap("n", "zkt", ":ObsidianTemplate default<CR>", { desc = "Zettelkasten [T]emplate Default" })
+    keymap("n", "zkr", ":ObsidianTemplate Referencias<CR>", { desc = "Zettelkasten [T]emplate Referencias" })
     keymap("n", "zks", ":ObsidianSearch<CR>", { desc = "Zettelkasten [S]earch" })
-
-    -- zkd: Ir a nota diaria
     keymap("n", "zkd", ":ObsidianToday<CR>", { desc = "Zettelkasten [D]aily" })
   end,
 }
