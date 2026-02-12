@@ -96,6 +96,28 @@
     zsh-autocomplete             # Autocomple for terminal
     zsh-autosuggestions          # Autosuggestions for terminal
     zsh-syntax-highlighting      # Highligh installed packages
+    # --- Lua y dependencias para que luarocks.nvim no falle ---
+  # lua51
+  # lua51Packages.lua
+
+  # lua51Packages.dkjson        # Esto soluciona el error que pusiste
+  # lua51Packages.jsonschema    # Suele ser la siguiente en fallar
+  # lua51Packages.luarocks      # El binario del sistema
+  # nodePackages.mermaid-cli
+  # pkg-config
+  # unzip
+  # curl
+  # imagemagick.dev  # IMPORTANTE: Provee los headers para que luarocks compile
+  #
+  # # Usamos LuaJIT porque es lo que Neovim usa internamente
+  # luajitPackages.magick
+  # luajitPackages.dkjson
+  #
+
+  # lua51        # Aseguramos que esté la base de lua
+  # lua51Packages.luarocks
+  # lua51Packages.magick 
+  #
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -151,6 +173,16 @@
   #
   home.sessionVariables = {
      EDITOR = "nvim";
+     # Muy importante para que el plugin encuentre la librería que Nix instaló
+     LD_LIBRARY_PATH = "${pkgs.imagemagick}/lib:\$LD_LIBRARY_PATH";
+     PKG_CONFIG_PATH = "${pkgs.imagemagick}/lib/pkgconfig:\$PKG_CONFIG_PATH";
+     # Esto ayuda a que los procesos hijos de Neovim vean las imágenes
+     # LUA_PATH = "${pkgs.lua51Packages.dkjson}/share/lua/5.1/?.lua;${pkgs.lua51Packages.dkjson}/share/lua/5.1/?/init.lua;;";
+  	 # IMPORTANTE: Esto le dice a Neovim dónde están las librerías de Nix
+  	 # LUA_CPATH = "${pkgs.luajitPackages.magick}/lib/lua/5.1/?.so;;";
+  	 # LUA_PATH = "${pkgs.luajitPackages.magick}/share/lua/5.1/?.lua;${pkgs.luajitPackages.dkjson}/share/lua/5.1/?.lua;;";
+
+     WEZTERM_PANE = "1";
   };
 
   # Activation script to clone tpm if it doesn't exist

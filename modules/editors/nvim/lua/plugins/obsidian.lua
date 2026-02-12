@@ -17,13 +17,13 @@ return {
         name = "personal",
         -- IMPORTANTE: Cambia esto a la ruta real de tu bóveda.
         -- Si usas WSL y la bóveda está en Windows:
-        path = "/mnt/c/Users/omarh/Documents/Obsidian Vault",
+        path = "/mnt/c/Users/omarh/Documents/ObsidianVault",
       },
     },
 
     -- Configuración de notas diarias (opcional)
     daily_notes = {
-      folder = "dailies",
+      folder = "1_Inbox",
       date_format = "%Y-%m-%d",
       template = nil,
     },
@@ -60,11 +60,64 @@ return {
       },
     },
 
+    -- 1. CONFIGURACIÓN DEL NOMBRE DEL ARCHIVO (El ID)
+    -- Esta función determina cómo se llamará el archivo físico .md
+    note_id_func = function(title)
+      -- Generamos un ID de sufijo (timestamp)
+      local suffix = ""
+      if title ~= nil then
+        -- Si le damos un título (ej: :ObsidianNew docker-intro),
+        -- el nombre será "docker-intro" (más legible)
+        return title
+      else
+        -- Si creamos una nota sin título, usa timestamp base 36 (muy corto)
+        -- O puedes usar os.time() para el timestamp clásico
+        for _ = 1, 4 do
+          suffix = suffix .. string.char(math.random(65, 90))
+        end
+        return tostring(os.time()) .. "-" .. suffix
+      end
+    end,
+
+    -- 2. CONFIGURACIÓN DEL FRONTMATTER (La metadata automática)
+    -- Esto se escribe AUTOMÁTICAMENTE al principio de cada nota nueva
+    note_frontmatter_func = function(note)
+      -- Si preferimos usar el timestamp como ID dentro de la nota:
+      local out = {
+        id = note.id,
+        aliases = note.aliases,
+        tags = note.tags,
+        -- Agregamos fecha y hora automática
+        created = os.date("%Y-%m-%d %H:%M"),
+        updated = os.date("%Y-%m-%d %H:%M"),
+      }
+
+      -- Si el nombre del archivo no tiene el ID numérico,
+      -- podemos forzar que el ID interno sea la fecha actual:
+      if note.title then
+        note.id = os.date("%Y%m%d%H%M") -- Formato Zettelkasten clásico
+      end
+
+      -- Agregamos el título como alias automáticamente si quieres
+      if note.title and not note.aliases[1] then
+        note.aliases = { note.title }
+      end
+
+      local note_metadata = {}
+      for k, v in pairs(out) do
+        note_metadata[k] = v
+      end
+      return note_metadata
+    end,
+
     -- Frontmatter (metadatos)
     disable_frontmatter = false,
-    note_id_func = function(title)
-      -- Generar ID basado en el título (o usar Zettelkasten ID si prefieres)
-      return title
-    end,
+
+    -- Directorio para plantillas más complejas (opcional)
+    templates = {
+      subdir = "3_Attachments/Templates",
+      date_format = "%Y-%m-%d",
+      time_format = "%H:%M",
+    },
   },
 }
