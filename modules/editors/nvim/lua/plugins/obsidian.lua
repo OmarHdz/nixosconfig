@@ -120,5 +120,6 @@ return {
     keymap("n", "zkr", ":ObsidianTemplate Referencias<CR>", { desc = "Zettelkasten [T]emplate Referencias" })
     keymap("n", "zks", ":ObsidianSearch<CR>", { desc = "Zettelkasten [S]earch" })
     keymap("n", "zkd", ":ObsidianToday<CR>", { desc = "Zettelkasten [D]aily" })
+    keymap("n", "zkb", ":ObsidianBacklinks<CR>", { desc = "Zettelkasten [B]acklinks" })
   end,
 }
