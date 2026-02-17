@@ -86,7 +86,7 @@ return {
         local es_nueva = note.metadata == nil or vim.tbl_isempty(note.metadata)
 
         if es_nueva and #mis_tags == 0 then
-          mis_tags = { "status/semilla", "tipo/procedimiento" }
+          mis_tags = { "status/to-do", "tipo/nota" }
         end
 
         -- 4. CREAR LA TABLA 'out' (Aquí estaba tu error antes, faltaba esto)
@@ -117,7 +117,8 @@ return {
     local keymap = vim.keymap.set
     keymap("n", "zkn", ":ObsidianNew ", { desc = "Zettelkasten [N]ew" })
     keymap("n", "zkt", ":ObsidianTemplate Default<CR>", { desc = "Zettelkasten [T]emplate Default" })
-    keymap("n", "zkr", ":ObsidianTemplate Referencias<CR>", { desc = "Zettelkasten [T]emplate Referencias" })
+    keymap("n", "zkrr", ":ObsidianTemplate Referencias<CR>", { desc = "Zettelkasten [T]emplate Referencias" })
+    keymap("n", "zkrn", ":ObsidianRename ", { desc = "Zettelkasten [T]emplate Referencias" })
     keymap("n", "zks", ":ObsidianSearch<CR>", { desc = "Zettelkasten [S]earch" })
     keymap("n", "zkd", ":ObsidianToday<CR>", { desc = "Zettelkasten [D]aily" })
     keymap("n", "zkl", ":ObsidianLinks<CR>", { desc = "Zettelkasten [L]inks" })
