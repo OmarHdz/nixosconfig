@@ -1,24 +1,26 @@
 return {
   "saghen/blink.cmp",
-  dependencies = {
-    "rafamadriz/friendly-snippets",
-    -- Asegúrate de que obsidian se cargue si es necesario,
-    -- aunque lazy suele manejarlo bien.
-  },
   version = "*",
+  dependencies = {
+    "saghen/blink.compat", -- ESTO ES VITAL: permite a Blink leer el motor de Obsidian
+  },
   opts = {
-    -- ... otras opciones de keymap, appearance, etc ...
-
+    keymap = { preset = "default" },
+    appearance = { nerd_font_variant = "mono" },
     sources = {
-      -- 1. AÑADE "obsidian" AQUI
-      default = { "lsp", "path", "snippets", "buffer", "obsidian" },
-
-      -- 2. DEFINE EL PROVEEDOR AQUI
+      default = { "lsp", "path", "snippets", "buffer", "obsidian", "obsidian_new", "obsidian_tags" },
       providers = {
         obsidian = {
           name = "obsidian",
-          module = "blink.cmp.sources.obsidian",
-          score_offset = 100, -- (Opcional) Para que salga arriba en la lista
+          module = "blink.compat.source",
+        },
+        obsidian_new = {
+          name = "obsidian_new",
+          module = "blink.compat.source",
+        },
+        obsidian_tags = {
+          name = "obsidian_tags",
+          module = "blink.compat.source",
         },
       },
     },
