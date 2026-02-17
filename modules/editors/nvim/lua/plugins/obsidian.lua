@@ -116,10 +116,11 @@ return {
     -- ATAJOS
     local keymap = vim.keymap.set
     keymap("n", "zkn", ":ObsidianNew ", { desc = "Zettelkasten [N]ew" })
-    keymap("n", "zkt", ":ObsidianTemplate default<CR>", { desc = "Zettelkasten [T]emplate Default" })
+    keymap("n", "zkt", ":ObsidianTemplate Default<CR>", { desc = "Zettelkasten [T]emplate Default" })
     keymap("n", "zkr", ":ObsidianTemplate Referencias<CR>", { desc = "Zettelkasten [T]emplate Referencias" })
     keymap("n", "zks", ":ObsidianSearch<CR>", { desc = "Zettelkasten [S]earch" })
     keymap("n", "zkd", ":ObsidianToday<CR>", { desc = "Zettelkasten [D]aily" })
+    keymap("n", "zkl", ":ObsidianLinks<CR>", { desc = "Zettelkasten [L]inks" })
     keymap("n", "zkb", ":ObsidianBacklinks<CR>", { desc = "Zettelkasten [B]acklinks" })
   end,
 }
