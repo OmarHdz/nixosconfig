@@ -14,14 +14,14 @@ return {
       },
 
       daily_notes = {
-        folder = "1_Inbox",
+        folder = "0_Inbox",
         date_format = "%Y-%m-%d",
         template = nil,
       },
 
       -- Configuración de plantillas
       templates = {
-        subdir = "3_Attachments/Templates",
+        subdir = "2_Attachments/Templates",
         date_format = "%Y-%m-%d",
         time_format = "%H:%M",
         substitutions = {},
