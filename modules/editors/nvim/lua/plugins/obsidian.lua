@@ -35,49 +35,58 @@ return {
       },
 
       note_frontmatter_func = function(note)
-        -- 1. Preparamos los campos básicos
-        -- Usamos note.metadata para mantener datos existentes y evitar sobrescribir
-        local out = {
-          id = note.id,
-          aliases = note.aliases or {},
-          tags = note.tags or {},
-        }
+        -- 1. ID Numérico (Siempre se mantiene)
+        local id_numerico = note.id
+        if string.len(note.id) < 12 or tonumber(note.id) == nil then
+          id_numerico = os.date("%Y%m%d%H%M")
+        end
 
-        -- 2. Lógica de Aliases (EVITAR DUPLICADOS)
-        -- Solo añadimos el título como alias si:
-        -- - Existe un título.
-        -- - El título no es igual al ID (para no repetir).
-        -- - El título NO está ya en la lista de aliases.
-        if note.title and note.title ~= note.id then
-          local ya_existe = false
-          for _, alias in ipairs(out.aliases) do
-            if alias == note.title then
-              ya_existe = true
-              break
+        -- 2. LÓGICA DE ALIASES (Convertir a texto separado por comas)
+        local lista_aliases = {}
+        if note.title and note.title ~= id_numerico then
+          table.insert(lista_aliases, note.title)
+        end
+        if note.aliases then
+          for _, alias in ipairs(note.aliases) do
+            -- Evitar duplicar el título en los aliases
+            if alias ~= note.title then
+              table.insert(lista_aliases, alias)
             end
           end
-          if not ya_existe then
-            table.insert(out.aliases, note.title)
+        end
+        -- Convertimos la tabla de aliases a un solo string: "alias1, alias2"
+        local final_aliases = table.concat(lista_aliases, ", ")
+
+        -- 3. LÓGICA DE TAGS (Sin duplicados y convertido a texto con comas)
+        local tag_set = {}
+        local es_nueva = note.metadata == nil or vim.tbl_isempty(note.metadata)
+
+        if es_nueva then
+          tag_set["status/semilla"] = true
+          tag_set["tipo/procedimiento"] = true
+        end
+
+        if note.tags then
+          for _, tag in ipairs(note.tags) do
+            tag_set[tag] = true
           end
         end
 
-        -- 3. Lógica de Tags por defecto
-        -- Si la lista de tags está vacía, ponemos los de por defecto
-        if #out.tags == 0 then
-          out.tags = { "status/to-do", "tipo/nota" }
+        local lista_tags = {}
+        for tag, _ in pairs(tag_set) do
+          table.insert(lista_tags, tag)
         end
+        -- Convertimos la tabla de tags a un solo string: "tag1, tag2"
+        local final_tags = table.concat(lista_tags, ", ")
 
-        -- 4. Lógica de Fechas
-        -- Si la nota ya tiene fecha de creación en los metadatos, la dejamos.
-        -- Si no, la creamos (esto solo pasará la primera vez).
-        if note.metadata ~= nil and note.metadata.created ~= nil then
-          out.created = note.metadata.created
-        else
-          out.created = os.date("%Y-%m-%d %H:%M")
-        end
-
-        -- La fecha de actualización siempre cambia al guardar
-        out.updated = os.date("%Y-%m-%d %H:%M")
+        -- 4. TABLA DE SALIDA
+        -- Al pasar strings en lugar de tablas, el plugin los escribe en una sola línea
+        local out = {
+          id = id_numerico,
+          aliases = final_aliases,
+          tags = final_tags,
+          updated = os.date("%Y-%m-%d %H:%M"),
+        }
 
         return out
       end,
