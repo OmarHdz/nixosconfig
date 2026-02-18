@@ -35,52 +35,52 @@ return {
       },
 
       note_frontmatter_func = function(note)
-        -- 1. ID Numérico (Siempre se mantiene)
+        -- 1. ID NUMÉRICO
         local id_numerico = note.id
         if string.len(note.id) < 12 or tonumber(note.id) == nil then
           id_numerico = os.date("%Y%m%d%H%M")
         end
 
-        -- 2. LÓGICA DE ALIASES (Convertir a texto separado por comas)
-        local lista_aliases = {}
-        if note.title and note.title ~= id_numerico then
-          table.insert(lista_aliases, note.title)
-        end
-        if note.aliases then
-          for _, alias in ipairs(note.aliases) do
-            -- Evitar duplicar el título en los aliases
-            if alias ~= note.title then
-              table.insert(lista_aliases, alias)
+        -- FUNCIÓN AUXILIAR: Limpiar y separar texto por comas
+        local function limpiar_lista(lista_entrada)
+          local set = {}
+          local resultado = {}
+          for _, item in ipairs(lista_entrada) do
+            -- Separar por comas si el plugin leyó todo el string como un solo item
+            for subitem in string.gmatch(item, "([^,]+)") do
+              local limpio = subitem:gsub("^%s*(.-)%s*$", "%1") -- Trim (quitar espacios)
+              if limpio ~= "" and not set[limpio] then
+                set[limpio] = true
+                table.insert(resultado, limpio)
+              end
             end
           end
+          return resultado
         end
-        -- Convertimos la tabla de aliases a un solo string: "alias1, alias2"
-        local final_aliases = table.concat(lista_aliases, ", ")
 
-        -- 3. LÓGICA DE TAGS (Sin duplicados y convertido a texto con comas)
-        local tag_set = {}
+        -- 2. LÓGICA DE ALIASES (Sin repeticiones)
+        local raw_aliases = note.aliases or {}
+        -- Añadimos el título a la lista para procesarlo
+        if note.title and note.title ~= id_numerico then
+          table.insert(raw_aliases, note.title)
+        end
+
+        local lista_aliases_limpia = limpiar_lista(raw_aliases)
+        local final_aliases = table.concat(lista_aliases_limpia, ", ")
+
+        -- 3. LÓGICA DE TAGS (Sin comas dobles ni repeticiones)
         local es_nueva = note.metadata == nil or vim.tbl_isempty(note.metadata)
+        local raw_tags = note.tags or {}
 
         if es_nueva then
-          tag_set["status/semilla"] = true
-          tag_set["tipo/procedimiento"] = true
+          table.insert(raw_tags, "status/semilla")
+          table.insert(raw_tags, "tipo/procedimiento")
         end
 
-        if note.tags then
-          for _, tag in ipairs(note.tags) do
-            tag_set[tag] = true
-          end
-        end
+        local lista_tags_limpia = limpiar_lista(raw_tags)
+        local final_tags = table.concat(lista_tags_limpia, ", ")
 
-        local lista_tags = {}
-        for tag, _ in pairs(tag_set) do
-          table.insert(lista_tags, tag)
-        end
-        -- Convertimos la tabla de tags a un solo string: "tag1, tag2"
-        local final_tags = table.concat(lista_tags, ", ")
-
-        -- 4. TABLA DE SALIDA
-        -- Al pasar strings en lugar de tablas, el plugin los escribe en una sola línea
+        -- 4. CONSTRUCCIÓN DE SALIDA
         local out = {
           id = id_numerico,
           aliases = final_aliases,
